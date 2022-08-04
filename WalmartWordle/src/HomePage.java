@@ -35,16 +35,18 @@ public class HomePage extends javax.swing.JFrame {
 
         jDialog1.setTitle("ERROR");
         jDialog1.setAlwaysOnTop(true);
-        jDialog1.setBounds(new java.awt.Rectangle(215, 65, 230, 100));
+        jDialog1.setBounds(new java.awt.Rectangle(0, 0, 230, 100));
         jDialog1.setMaximumSize(new java.awt.Dimension(215, 65));
         jDialog1.setMinimumSize(new java.awt.Dimension(215, 65));
         jDialog1.setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(67, 67, 67));
+        jPanel1.setAlignmentX(0.0F);
+        jPanel1.setAlignmentY(0.0F);
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Must enter a 5 letter word.");
+        jLabel1.setText("Must enter a valid 5 letter word.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -53,7 +55,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,18 +79,19 @@ public class HomePage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Walmart Wordle");
         setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(100, 100, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("Walmart Wordle"); // NOI18N
         setResizable(false);
 
-        HomePanel.setBackground(new java.awt.Color(25, 25, 25));
+        HomePanel.setBackground(new java.awt.Color(67, 67, 67));
 
         InstructionsLabel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
         InstructionsLabel.setForeground(new java.awt.Color(255, 255, 255));
         InstructionsLabel.setText("Enter desired 5 letter word below and click start to play.");
         InstructionsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField1.setBackground(new java.awt.Color(120, 124, 127));
+        jTextField1.setBackground(new java.awt.Color(144, 144, 144));
         jTextField1.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -98,7 +101,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(120, 124, 127));
+        jButton1.setBackground(new java.awt.Color(144, 144, 144));
         jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("START");
@@ -159,14 +162,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(this.jTextField1.getText().length() != 5){
+        if(!WalmartWordle.wordInDict(jTextField1.getText().toLowerCase())){
         
+            jDialog1.setBounds(getX() + 85, getY() + 25, 260, 100);
             jDialog1.setVisible(true);
         
         }
         else{
         
-            WalmartWordle.startButtonClicked();
+            WalmartWordle.startButtonClicked(jTextField1.getText().toLowerCase());
+            jTextField1.setText("");
         
         }
         
